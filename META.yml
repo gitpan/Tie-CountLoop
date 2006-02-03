@@ -1,6 +1,6 @@
 ---
 name: Tie-CountLoop
-version: 1.4
+version: 1.5
 author:
   - DULAUNOY Fabrice <fabrice@dulaunoy.com
 abstract: Have a counter looping in a scalar with min max and increment value.
@@ -10,5 +10,5 @@ requires:
 provides:
   Tie::CountLoop:
     file: lib/Tie/CountLoop.pm
-    version: 1.4
+    version: 1.5
 generated_by: Module::Build version 0.2611

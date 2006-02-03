@@ -1,0 +1,107 @@
+NAME
+    Tie::CountLoop - Have a counter looping in a scalar with min max and
+    increment value.
+
+SYNOPSIS
+            use Tie::CountLoop;
+
+            tie my $counter , 'Tie::CountLoop',15 ,-1 ,15 ,7 ,0;
+
+            my $t = tied $counter;
+            $t->increment( 1 );
+
+            for ( 1 .. 20 )
+            {
+                    print "  <<$counter>> <$_>  \n";
+            }
+
+            $t->increment( 0 );
+            for ( 1 .. 20 )
+            {
+                    print "  <<$counter>> <$_>  \n";
+            }
+
+            or
+         
+            use Tie::CountLoop;
+            tie my $counter , 'Tie::CountLoop';
+        
+            for ( 1 .. 20 )
+            {
+                    print "  <<$counter>> <$_>  \n";
+            }
+        
+DESCRIPTION
+    "Tie::CountLoop" allows you to tie a scalar in such a way that it
+    increments each time it is used. The tie takes 4 optionals extra
+    arguments.
+
+    Argument 1: is the *start* value of the counter. (default =0).
+
+    Argument 2: is the *increment* value. (default = 1).
+
+    Argument 3: is the *maximal* value. When this value is reached, the
+    counter is set to the *minimal* value (default = (2**32) -1)
+
+    Argument 4: is the *minimal* value. When this value is reached if we
+    used an negative *increment* value, the counter is set to the *maximal
+    value* (default = 0)
+
+    Argument 5: is a *skipping* value. If set to 3, means that you could
+    access the counter 3 time without incrementing (defualt=1)
+
+METHODS
+     The Tie::CountLoop provide 3 extra methods.
+
+  increment
+        which change the autoincrement behaviour. With 1, the counter is
+        incremented when accessed. With 0, the counter is NOT incremented
+        when accessed.
+
+  toggle
+        which toggle the autoincrement behaviour (on and off and again).
+
+  retrieve
+        get the value of the counter without incrementing the counter.
+
+REVISION HISTORY
+         $Log: CountLoop.pm,v $
+         Revision 1.4  2006/02/03 10:21:37  fabrice
+         correct code for maximal and minimal value after increment
+
+         Revision 1.3  2006/01/26 19:31:20  fabrice
+         add method 'retrieve'
+
+         Revision 1.2  2006/01/26 15:53:56  fabrice
+         pod created
+    
+         $Revision: 1.4 $
+
+AUTHOR
+     This package was written by *Dulaunoy Fabrice <fabrice@dulaunoy.com*>.
+
+COPYRIGHT and LICENSE
+     This package is copyright 2006 by *Dulaunoy Fabrice
+     <fabrice@dulaunoy.com*>.
+
+     Under the GNU GPL2
+
+     This program is free software; you can redistribute it and/or modify it
+     under the terms of the GNU General Public License as published by the
+     Free Software Foundation; either version 2 of the License, or (at your
+     option) any later version.
+
+     This program is distributed in the hope that it will be useful, but
+     WITHOUT ANY WARRANTY; without even the implied warranty of
+     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+     General Public License for more details.
+
+     You should have received a copy of the GNU General Public License along
+     with this program; if not, write to the Free Software Foundation, Inc.,
+     59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+     Tie::CountLoop Copyright (C) 2004 DULAUNOY Fabrice Tie::CountLoop comes
+     with ABSOLUTELY NO WARRANTY; for details See:
+     <http://www.gnu.org/licenses/gpl.html> This is free software, and you
+     are welcome to redistribute it under certain conditions;
+

@@ -4,8 +4,8 @@ package Tie::CountLoop;
 # Fork package
 # Gnu GPL2 license
 #
-# $Id: CountLoop.pm,v 1.4 2006/02/03 10:21:37 fabrice Exp $
-# $Revision: 1.4 $
+# $Id: CountLoop.pm,v 1.5 2006/02/03 10:42:55 fabrice Exp $
+# $Revision: 1.5 $
 #
 # Fabrice Dulaunoy <fabrice@dulaunoy.com>
 ###########################################################
@@ -15,7 +15,8 @@ package Tie::CountLoop;
 use strict;
 use constant MAX => ( 2**32 ) - 1;
 use vars qw($VERSION);
-$VERSION = do { my @rev = ( q$Revision: 1.4 $ =~ /\d+/g ); sprintf "%d." . "%d" x $#rev, @rev };
+
+$VERSION = do { my @rev = ( q$Revision: 1.5 $ =~ /\d+/g ); sprintf "%d." . "%d" x $#rev, @rev };
 
 my $skip = 0;
 my $inc  = 1;
@@ -172,6 +173,9 @@ get the value of the counter without incrementing the counter.
 =head1 REVISION HISTORY
 
     $Log: CountLoop.pm,v $
+    Revision 1.5  2006/02/03 10:42:55  fabrice
+    add README file
+
     Revision 1.4  2006/02/03 10:21:37  fabrice
     correct code for maximal and minimal value after increment
 
@@ -181,7 +185,7 @@ get the value of the counter without incrementing the counter.
     Revision 1.2  2006/01/26 15:53:56  fabrice
     pod created
     
-    $Revision: 1.4 $
+    $Revision: 1.5 $
 
 
 =head1 AUTHOR
