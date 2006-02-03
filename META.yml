@@ -1,15 +1,14 @@
 ---
 name: Tie-CountLoop
-version: 1.3
+version: 1.4
+author:
+  - DULAUNOY Fabrice <fabrice@dulaunoy.com
+abstract: Have a counter looping in a scalar with min max and increment value.
 license: perl
-distribution_type: module
 requires:
   perl: 5.6.1
-recommends: {}
-build_requires: {}
-conflicts: {}
 provides:
   Tie::CountLoop:
     file: lib/Tie/CountLoop.pm
-    version: 1.3
-generated_by: Module::Build version 0.20
+    version: 1.4
+generated_by: Module::Build version 0.2611

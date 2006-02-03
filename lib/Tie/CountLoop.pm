@@ -4,8 +4,8 @@ package Tie::CountLoop;
 # Fork package
 # Gnu GPL2 license
 #
-# $Id: CountLoop.pm,v 1.3 2006/01/26 19:31:20 fabrice Exp $
-# $Revision: 1.3 $
+# $Id: CountLoop.pm,v 1.4 2006/02/03 10:21:37 fabrice Exp $
+# $Revision: 1.4 $
 #
 # Fabrice Dulaunoy <fabrice@dulaunoy.com>
 ###########################################################
@@ -13,9 +13,9 @@ package Tie::CountLoop;
 #
 ###########################################################
 use strict;
-use constant MAX => (2**32)-1; 
+use constant MAX => ( 2**32 ) - 1;
 use vars qw($VERSION);
-$VERSION = do { my @rev = ( q$Revision: 1.3 $ =~ /\d+/g ); sprintf "%d." . "%d" x $#rev, @rev };
+$VERSION = do { my @rev = ( q$Revision: 1.4 $ =~ /\d+/g ); sprintf "%d." . "%d" x $#rev, @rev };
 
 my $skip = 0;
 my $inc  = 1;
@@ -26,9 +26,9 @@ sub TIESCALAR
     bless {
         _value     => $_[1],
         _increment => $_[2] || 1,
-        _max       => $_[3] || MAX ,
+        _max       => $_[3] || MAX,
         _min       => $_[4] || 0,
-	_skip      => $_[5] ,
+        _skip      => $_[5],
     }, $class;
 }
 
@@ -41,9 +41,9 @@ sub FETCH
         if ( $skip > ( $self->{ _skip } ) )
         {
             $self->{ _value } += $self->{ _increment };
-            $self->{ _value } > $self->{ _max } ? $self->{ _value } = $self->{ _min } : $self->{ _value };
-            $self->{ _value } < $self->{ _min } ? $self->{ _value } = $self->{ _max } : $self->{ _value };
-            $skip = 1;
+            $self->{ _value } = $self->{ _value } > $self->{ _max } ? $self->{ _min } : $self->{ _value };
+            $self->{ _value } = $self->{ _value } < $self->{ _min } ? $self->{ _max } : $self->{ _value };
+            $skip             = 1;
         }
     }
     return $self->{ _value };
@@ -172,13 +172,16 @@ get the value of the counter without incrementing the counter.
 =head1 REVISION HISTORY
 
     $Log: CountLoop.pm,v $
+    Revision 1.4  2006/02/03 10:21:37  fabrice
+    correct code for maximal and minimal value after increment
+
     Revision 1.3  2006/01/26 19:31:20  fabrice
     add method 'retrieve'
 
     Revision 1.2  2006/01/26 15:53:56  fabrice
     pod created
     
-    $Revision: 1.3 $
+    $Revision: 1.4 $
 
 
 =head1 AUTHOR
